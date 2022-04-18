@@ -27,9 +27,16 @@ public class CustomerDao {
                 .mapToObj(i -> new Customer(i, "customer" + i))
                 .collect(Collectors.toList());
     }
+
     public Flux<Customer> getCustomersStream() {
         return Flux.range(1, 10)
                 .delayElements(Duration.ofSeconds(1))
+                .doOnNext(i -> System.out.println("processing count: " + i))
+                .map(i -> new Customer(i, "customer" + i));
+    }
+
+    public Flux<Customer> getCustomersStreamList() {
+        return Flux.range(1, 10)
                 .doOnNext(i -> System.out.println("processing count: " + i))
                 .map(i -> new Customer(i, "customer" + i));
     }
