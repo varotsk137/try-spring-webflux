@@ -1,0 +1,12 @@
+server:
+  port: 8083
+
+spring:
+  data:
+    mongodb:
+      database: product
+      host: localhost
+      port: 27017
+  mongodb:
+    embedded:
+      version: 4.4.2
